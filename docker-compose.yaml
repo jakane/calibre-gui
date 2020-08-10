@@ -1,0 +1,21 @@
+---
+version: "2.1"
+services:
+  calibre:
+    image: linuxserver/calibre
+    container_name: calibre
+    environment:
+      - PUID=378876
+      - PGID=378876
+      - TZ=America/Denver
+      #- GUAC_USER=abc #optional
+      #- GUAC_PASS=900150983cd24fb0d6963f7d28e17f72 #optional
+      - UMASK_SET=022 #optional
+      - CLI_ARGS= #optional
+    volumes:
+      - /data/calibre-gui:/config
+      - /home/jkane/Dropbox/Downloads/eBooks:/ebooks
+    ports:
+      - 10.40.140.134:8080:8080
+      - 10.40.140.134:8081:8081
+    restart: unless-stopped
